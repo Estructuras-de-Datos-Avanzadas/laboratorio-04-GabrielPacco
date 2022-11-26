@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-#-*- coding: utf8 -*-
-
 from PIL import Image
 from color import Color
 from octree_quantizer import OctreeQuantizer
@@ -14,8 +11,8 @@ def main():
     octree = OctreeQuantizer()
 
     # add colors to the octree
-    for j in xrange(height):
-        for i in xrange(width):
+    for j in range(height):
+        for i in range(width):
             octree.add_color(Color(*pixels[i, j]))
 
     # 256 colors for 8 bits per pixel output image
@@ -31,8 +28,8 @@ def main():
     # save output image
     out_image = Image.new('RGB', (width, height))
     out_pixels = out_image.load()
-    for j in xrange(height):
-        for i in xrange(width):
+    for j in range(height):
+        for i in range(width):
             index = octree.get_palette_index(Color(*pixels[i, j]))
             color = palette[index]
             out_pixels[i, j] = (color.red, color.green, color.blue)
